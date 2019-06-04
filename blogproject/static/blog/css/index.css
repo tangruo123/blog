@@ -1,0 +1,15 @@
+/* -------------------------------------------- 轮播图 --------------------------------------------------------- */
+#myCarousel{margin: 4px;}
+/* -------------------------------------------- 分类文章 --------------------------------------------------------- */
+/* .category{background: pink;} */
+.category_ls{background: #f5f5f5; border-radius: 4px; margin-top: 8px;}
+.category_ls h3{font-size:14px; margin-top: 0px; font-weight: bold; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */}
+.category_ls p{max-height: 60px; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */}
+.category_ls div:nth-child(1) a{float: right;}
+
+/* 最多的文章 */
+.category_article_ls{padding: 0px; background: #f5f5f5; border-radius: 4px;}
+.category_article_list .ls_font div{position: absolute; bottom: -40px;}
+.category_article_list{position: relative;}
+.category_article_list .ls_font p{ max-height: 30px; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */ }
+.category_article_list .info{position: absolute; bottom: 8px; right: 18px;}

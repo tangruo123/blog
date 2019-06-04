@@ -1,0 +1,252 @@
+2019-05-14 06:25:33,968 [Thread-1:7840] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 599, in register
+    register_form = RegisterForm()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\forms\models.py", line 285, in __init__
+    raise ValueError('ModelForm has no model class specified.')
+ValueError: ModelForm has no model class specified.
+2019-05-14 06:30:03,720 [Thread-1:2288] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 585, in register
+    user = User.objects.create(username=register_form.cleaned_data["username"],
+NameError: name 'User' is not defined
+2019-05-14 06:30:42,670 [Thread-1:16916] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 587, in register
+    password=make_password(register_form.cleaned_data["password"]), )
+NameError: name 'make_password' is not defined
+2019-05-14 06:31:45,960 [Thread-1:16108] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 593, in register
+    login(request, user)
+TypeError: login() takes 1 positional argument but 2 were given
+2019-05-14 06:32:17,860 [Thread-1:7220] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'wangwu' for key 'username'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 588, in register
+    password=make_password(register_form.cleaned_data["password"]), )
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\query.py", line 422, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\contrib\auth\base_user.py", line 66, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\models\sql\compiler.py", line 1335, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1062, "Duplicate entry 'wangwu' for key 'username'")
+2019-05-14 06:43:08,908 [Thread-1:6204] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 597, in register
+    login(request)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 615, in login
+    username = login_form.cleaned_date["username"]
+AttributeError: 'LoginForm' object has no attribute 'cleaned_date'
+2019-05-14 06:51:44,253 [Thread-11:3272] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 597, in register
+    login(request)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 615, in login
+    username = login_form.cleaned_date["username"]
+AttributeError: 'LoginForm' object has no attribute 'cleaned_date'
+2019-05-14 06:52:41,290 [Thread-18:11488] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 597, in register
+    login(request)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 615, in login
+    username = login_form.cleaned_date["username"]
+AttributeError: 'LoginForm' object has no attribute 'cleaned_date'
+2019-05-14 06:55:02,271 [Thread-1:1620] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 597, in user_register
+    login(request, user)
+NameError: name 'login' is not defined
+2019-05-14 06:56:32,261 [Thread-1:4528] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 600, in user_register
+    return redirect(request.POST.get('source_url'))
+NameError: name 'redirect' is not defined
+2019-05-14 06:58:22,732 [Thread-1:16744] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 599, in user_register
+    return redirect(request.POST.get('source_url'))
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\shortcuts.py", line 58, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\urls\resolvers.py", line 668, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for '' not found. '' is not a valid view function or pattern name.
+2019-05-14 07:04:38,833 [Thread-1:16744] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 625, in user_login
+    return render(request, 'failure.html', {'reason': login_form.errors})
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: failure.html
+2019-05-14 07:11:22,021 [Thread-1:12472] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 615, in user_login
+    username = login_form.cleaned_date["username"]
+AttributeError: 'LoginForm' object has no attribute 'cleaned_date'
+2019-05-14 07:11:22,167 [Thread-1:12472] [django.request:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+2019-05-14 07:13:19,184 [Thread-1:9756] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\ljz\Desktop\project\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ljz\Desktop\project\blogproject\blog\views.py", line 617, in user_login
+    user = authenticate(username=username, password=password)
+NameError: name 'authenticate' is not defined

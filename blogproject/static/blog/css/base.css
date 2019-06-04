@@ -1,0 +1,64 @@
+/* ---------------------------------------------- 全局样式 ---------------------------------------------------- */
+body{background: #e1e1e1}
+img{width:100%;height:100%;}
+a{color: #444;}
+a:hover{color: #4ba5d8;}
+.row{max-width: 1200px; margin: 0 auto;}
+.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,
+.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12{padding: 4px;}
+.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,
+.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12{padding: 4px;}
+.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,
+.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12{padding: 4px;}
+/* 字体图标大小 */
+.glyphicon:before{font-size: 12px;}
+/* ---------------------------------------------- 顶部登录、导航 -------------------------------------------------- */
+.top_left{float: left;}
+.top_left a,.top_left span{margin: 0 4px;}
+
+.top_right{float: right;}
+.top_right a{margin: 0 4px;}
+
+.navbar{margin-bottom: 0;padding: 0px;}
+/* ---------------------------------------------- 左侧 ----------------------------------------------------------- */
+.body_left{padding: 0px; border-radius: 4px;}
+/*  文章列表  */
+.new{padding: 0px; background: #f5f5f5; border-radius: 4px; position: relative;}
+.recommend_img,.recommend_font{padding: 8px;}
+.recommend_font h3{font-size: 16px;margin-top: 0px; font-weight: bold; max-height: 34px; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */}
+.recommend_font p{max-height: 60px; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */}
+.recommend_font{ }
+.new .info{position: absolute; bottom: 8px; right: 20px;}
+.recommend_img .img_type{background: rgba(200, 200, 200, 0.5); position: absolute; top: 8px; left: 8px; font-weight: bold; border-radius: 4px;}
+.recommend_img:hover .img_type{color: #f1f1f1;}
+/* ---------------------------------------------- 右侧 ----------------------------------------------------------- */
+.body_right{padding: 0px;}
+/* 最多的文章 */
+/* .max_article{background: aqua;} */
+.max_article_ls{padding: 0px; background: #f5f5f5; border-radius: 4px;}
+.max_article_list .ls_font div{position: absolute; bottom: -40px;}
+.max_article_list{position: relative;}
+.max_article_list .ls_font p{ max-height: 40px; overflow: hidden; text-overflow: ellipsis;/* 文字隐藏 */ }
+.max_article_list .info{position: absolute; bottom: 8px; right: 18px;}
+/* 文章分类名 */
+/* .type{background: aqua;} */
+.type_ls{padding: 0px; background: #f5f5f5; border-radius: 4px;}
+.category_ls_img .img_type{background: rgba(200, 200, 200, 0.5); position: absolute; top: 4px; left: 4px; font-weight: bold; border-radius: 4px;}
+.category_ls_img:hover .img_type{color: #f1f1f1;}
+/* 标签云 */
+.label_ls{font-size: 16px;}
+.label{font-size: 16px;}
+.label_list{background: #f5f5f5; border-radius: 4px;}
+.label_list .label:hover{background: #4ba5d8;}
+/* 文章归档 */
+/* .archive{background: aqua;} */
+.archive_ls{background: #f5f5f5; border-radius: 4px;}
+/* --------------------------------------- 右侧返回顶部和底部 ---------------------------------------------------- */
+.return{width: 50px; height: 100px; position: fixed; right: 4px; top: 50%; font-size: 12px; text-align: center;}
+.return_top{height: 28px; background: #555; margin: 11px; border-radius: 50%; color: #ccc; line-height: 28px;}
+.return_bottom{height: 28px; background: #555; margin: 11px; border-radius: 50%; color: #ccc; line-height: 28px;}
+
+/* --------------------------------------------- 底部 ---------------------------------------------------------- */
+footer{background: #555; color: #ccc;}
+footer div div div{text-align: center;}
+footer div div div a{color: #ccc;}

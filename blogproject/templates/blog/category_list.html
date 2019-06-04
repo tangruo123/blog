@@ -1,0 +1,66 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block body1 %}
+
+            <!-- 文章 -->
+            <div>
+                {% for article in article_list %}
+                <div class="col-xs-12">
+                    <div class="col-xs-12 new">
+                        <div class="col-xs-4 recommend_img"><a href="{{ article.get_absolute_url }}"><img src="../../../{{ article.img }}" class="img-rounded"><div class="img_type">{{ article.category }}</div></a></div>
+                        <div class="col-xs-8 recommend_font">
+                            <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                            <p class="hidden-xs">{{ article.excerpt }}</p>
+                            <div class="clearfix gk">
+                                <span>{{ article.created_time }}</span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span>{{ article.views }}</span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span>{{ article.comment_set.count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+  <ul class="pagination pull-right">
+     {% if first %}
+    <li><a href="?page=1">1</a></li>
+     {% endif %}
+      {% if left %}
+        {% if left_has_more %}
+            <li><span>...</span></li>
+        {% endif %}
+        {% for i in left %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endfor %}
+      {% endif %}
+    <li><a href="?page={{ page_obj.number }}" style="color: red">{{ page_obj.number }}</a></li>
+    {% if right %}
+    {% for i in right %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endfor %}
+    {% if right_has_more %}
+        <li><span>...</span></li>
+    {% endif %}
+    {% endif %}
+    {% if last %}
+    <li><a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}
+
+{% block body2 %}
+
+
+<!-- 登录成功时返回 -->
+<input type="hidden" name="source_url" value="{{ request.META.HTTP_REFERER }}">
+{% endblock %}

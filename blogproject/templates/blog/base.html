@@ -1,0 +1,235 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!DOCTYPE html><!-- 声明为html5 -->
+<html lang="zh-cmn-Hans"><!-- 声明语言为简体中文 -->
+<head>
+    <!-- 网页的字符编码 -->
+    <meta charset="UTF-8">
+    <!-- 确保适当的绘制和触屏缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 禁用移动端缩放功能 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>博客</title>
+    <!-- jQuery3.4.0 -->
+    <script src="{% static 'blog/bootstrap-3.3.7-dist/js/jQuery3_4_0.js' %}"></script>
+    <!-- bootstrap核心文件 -->
+    <link rel="stylesheet" href="{% static 'blog/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}">
+    <script src="{% static 'blog/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    <!-- 设计的logo -->
+    <link rel="icon" href="{% static 'blog/img/favicon.ico' %}">
+    <!-- 自定义样式 -->
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <!-- 顶部登录、链接 -->
+    <div class="row">
+        <div class="col-md-12 hidden-xs hidden-sm">
+            <div class="col-sm-9 top_left">
+                {# 方法is_authenticated()：判断用户是否登录 #}
+                {% if request.user.is_authenticated %}
+                    <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ request.user.username }}</a>
+                    <a href="{% url 'blog:logout' %}">退出</a>
+                {% else %}
+                    <a href="{% url 'blog:login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录</a>
+                    <a href="{% url 'blog:register' %}">注册</a>
+                {% endif %}
+                <!--<span>名人名言</span>-->
+            </div>
+            <div class="col-sm-3 top_right">
+                <!--<a href="#">网站公告</a>-->
+                <!--<a href="#">文章更新</a>-->
+                <!--<a href="#">友情链接</a>-->
+                <!--<a href="#">给我留言</a>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏、搜索 -->
+    <header class="row">
+        <!-- 导航栏和搜索 -->
+        <nav class="col-md-12 navbar navbar-default">
+            <div class="container-fluid">
+                <!-- logo -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">菜单栏</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {% if request.user.is_authenticated %}
+                    <button type="button" class="navbar-toggle">
+                            <a href="{% url 'blog:logout' %}">退出</a>
+                    </button>
+                    <button type="button" class="navbar-toggle">
+                            <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ request.user.username }}</a>
+                    </button>
+                    {% else %}
+                    <button type="button" class="navbar-toggle">
+                            <a href="{% url 'blog:register' %}">注册</a>
+                    </button>
+                    <button type="button" class="navbar-toggle">
+                            <a href="{% url 'blog:login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>登录</a>
+                    </button>
+                     {% endif %}
+                    <a class="navbar-brand" href="{% url 'blog:index' %}">blog</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- 左侧导航 -->
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="{% url 'blog:index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;首页<span class="sr-only">当前页面</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp;技术分享<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% get_categories as category_list %}
+                                {% for category in category_list %}
+                                <li><a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a></li>
+                                {% endfor %}
+                                <!-- <li role="separator" class="divider"></li>一条横线 -->
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;&nbsp;关于<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'blog:about' %}">关于本站</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    
+                    <!-- 右侧导航 -->
+                    <!--<ul class="nav navbar-nav navbar-right">-->
+                        <!--&lt;!&ndash; 搜索 &ndash;&gt;-->
+                        <!--<form class="navbar-form navbar-left">-->
+                            <!--<div class="form-group">-->
+                            <!--<input type="text" class="form-control" placeholder="Search">-->
+                            <!--</div>-->
+                            <!--<button type="submit" class="btn btn-default">搜索</button>-->
+                        <!--</form>-->
+                    <!--</ul>-->
+
+                    
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- 公告信息 -->
+        <!--<div class="col-md-12">-->
+            <!--<div class="col-md-2 top_left">-->
+                <!--<a href="#">这是一条公告</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </header>
+    <!-- 顶部结束 -->
+
+    <!-- 文章列表和右侧导航 -->
+    <div class="row">
+        <div class="col-md-8 body_left">
+            {% block body1 %}
+            {% endblock %}
+        </div>
+        <!-- 左侧文章列表结束 -->
+
+        <!-- 右侧导航 -->
+        <div class="col-md-4 body_right hidden-xs hidden-sm">
+            <!-- 最多的文章 -->
+            <div class="col-md-12 max_article">
+                <div class="col-md-12 max_article_ls">
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;查看最多</button>
+                        </div>
+                        <!--<div class="btn-group" role="group">-->
+                            <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;&nbsp;点赞最多</button>-->
+                        <!--</div>-->
+                        <!--<div class="btn-group" role="group">-->
+                            <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;&nbsp;评论最多</button>-->
+                        <!--</div>-->
+                    </div>
+                    {% get_max_articles as max_articles %}
+                    {% for article in max_articles %}
+                    <div class="max_article_list col-sm-12">
+                        <div class="col-xs-4 ls_img recommend_img"><a href="{{ article.get_absolute_url }}"><img src="../../../{{ article.img }}" class="img-rounded"><div class="img_type">{{ article.category }}</div></a></div>
+                        <div class="col-xs-8 ls_font">
+                            <a href="{{ article.get_absolute_url }}"><p>{{ article.title }}</p></a>
+                        </div>
+                        <div class="info">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;<span>{{ article.views }}</span>&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;<span>{{ article.created_time }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 文章类型 -->
+            <div class="col-sm-12 type">
+                <div class="col-sm-12 type_ls">
+                    <div class="col-sm-12"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp;&nbsp;<span>推荐栏目</span></div>
+                    {% get_categories as category_list %}
+                    {% for category in category_list %}
+                    <div class="col-sm-4 col-sm-offset-2"><a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 标签云 -->
+            <div class="col-sm-12 label_ls">
+                <div class="col-sm-12 label_list">
+                    <div class="col-sm-12"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;<span>标签云</span></div>
+                    {% get_tags as tag_list %}
+                    {% for tag in tag_list %}
+                    <div class="col-sm-4"><a href="{% url 'blog:tag' tag.pk %}"><span class="label label-default">{{ tag.name }}</span></a></div>
+                        {% empty %}
+                        暂无标签！
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- 文章归档 -->
+            <div class="col-sm-12 archive">
+                    <div class="col-sm-12 archive_ls">
+                        <div class="col-sm-12"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp;&nbsp;<span>文章归档</span></div>
+                        {% archives as date_list %}
+                        {% for date in date_list %}
+
+                        <div class="">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }}年{{ date.month }}月</a></div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+        </div>
+        <!-- 文章列表和右侧导航结束 -->
+
+        {% block body2 %}
+        {% endblock %}
+
+
+    </div>
+
+
+    <!-- 右侧返回顶部和底部 -->
+    <div class="return hidden-xs hidden-sm">
+        <a href="#" title="返回顶部" id="top"><div class="return_top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><br/></div></a>
+        <a href="#" title="返回底部" id="foot"><div class="return_bottom"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div></a>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="row">
+            <div class="col-sm-12">
+                <div>Copyright&nbsp;&nbsp;©2019&nbsp;&nbsp;<a href="">李加樟的个人网站</a>&nbsp;&nbsp;<a href="http://www.beian.miit.gov.cn/">闽ICP备19010159号</a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<!-- 返回顶部和底部 -->
+<script src="{% static 'blog/js/base.js' %}"></script>
+</html>

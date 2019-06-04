@@ -1,0 +1,99 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'blog/css/detail.css' %}">
+    <!-- 文章代码高亮 -->
+    <link rel="stylesheet" href="{% static 'blog/css/github.css' %}">
+{% endblock %}
+
+
+{% block body1 %}
+    <div class="col-xs-12">
+        <div class="col-xs-12 article">
+            <div class="article_head">
+                <h2>{{ article.title }}</h2>
+                <span>{{ article.created_time }}</span>&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;<span>{{ article.views }}</span>&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;<span>{{ article.comment_set.count }}</span>
+            </div>
+            {{ article.body|safe }}
+        </div>
+    </div>
+
+
+        <!--&lt;!&ndash; 上一页 &ndash;&gt;-->
+        <!--<div class="col-xs-6">-->
+            <!--<a href="#">-->
+                <!--<div class="col-xs-12 previou">-->
+                    <!--<span>上一页</span>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 下一页 &ndash;&gt;-->
+        <!--<div class="col-xs-6">-->
+            <!--<a href="#">-->
+                <!--<div class="col-xs-12  next">-->
+                    <!--<span href="#">下一页</span>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+
+<!-- 评论提交表单 -->
+    <div class="col-xs-12">
+        <form class="form-horizontal"  action="{% url 'blog:article_comment' article.pk %}" method="post">
+        {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.text.id_for_label }}" class="col-xs-offset-1 col-sm-offset-3 col-xs-2 control-label">发表评论</label>
+                <div class="col-xs-8 col-sm-4">
+                    <textarea class="form-control" name="text" id="{{ form.text.id_for_label }}" placeholder="Comments"></textarea>
+                    {{ form.text.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}" class="col-xs-offset-1 col-sm-offset-3 col-xs-2 control-label">昵称</label>
+                <div class="col-xs-8 col-sm-4">
+                    <input type="text" name="name" class="form-control" id="{{ form.name.id_for_label }}" placeholder="Username" value="{{ request.user.username }}">
+                    {{ form.name.errors }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}" class="col-xs-offset-1 col-sm-offset-3 col-xs-2 control-label">邮箱</label>
+                <div  class="col-xs-8 col-sm-4">
+                    <input type="email" name="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="Email" value="{{ request.user.email }}">
+                    {{ form.email.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-3 col-sm-offset-5 col-xs-10">
+                    <button type="submit" class="btn btn-default">评论</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="comment-list-panel col-xs-12">
+        <div class="col-xs-12 comments">
+            <h3 class="col-xs-offset-1 col-sm-offset-3">评论列表，共 <span>{{ comment_list|length }}</span> 条评论</h3>
+            <ul class="comment-list list-unstyled col-xs-offset-1 col-sm-offset-3">
+                {% for comment in comment_list %}
+                <li class="comment-item">
+                    <span class="nickname">{{ comment.name }}</span>
+                    <time class="submit-date" datetime="{{ comment.created_time }}">{{ comment.created_time }}</time>
+                    <div class="text">
+                        {{ comment.text }}
+                    </div>
+                </li>
+                {% empty %}
+                    暂无评论
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body2 %}
+<!-- 登录成功时返回 -->
+<input type="hidden" name="source_url" value="{{ request.META.HTTP_REFERER }}">
+{% endblock %}
